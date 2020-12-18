@@ -10,6 +10,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const { query, films, loading, hasErrors } = useSelector(omdbSelector);
   const [searchQuery, setSearchQuery] = useState('');
+
   console.log('Omdb: ', query.payload);
 
   const onSubmit = (event) => {
@@ -19,6 +20,7 @@ const Search = () => {
     }
     event.preventDefault();
   };
+  console.log('API KEY: ', process.env.REACT_APP_OMDB_API_KEY);
 
   return (
     <section>
@@ -28,7 +30,6 @@ const Search = () => {
         <Button type='submit'>Search</Button>
       </Form>
       <div className='content'>
-        {/* {renderOmdb()} */}
         <FilmList films={films} loading={loading} hasErrors={hasErrors} />
       </div>
     </section>
