@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../components/Form/Button';
-import { FilmList } from '../../components/Films';
-import Form from '../../components/Form/Form';
-import Input from '../../components/Form/Input';
+import FilmList from '../../components/Films';
+import { Button, Form, Input } from '../../components/Form';
 import { fetchOmdb, omdbSelector } from '../../redux/slices/films';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const { query, films, loading, hasErrors } = useSelector(omdbSelector);
+  const { films, loading, hasErrors } = useSelector(omdbSelector);
   const [searchQuery, setSearchQuery] = useState('');
-
-  console.log('Omdb: ', query.payload);
 
   const onSubmit = (event) => {
     if (searchQuery) {
@@ -20,11 +16,10 @@ const Search = () => {
     }
     event.preventDefault();
   };
-  console.log('API KEY: ', process.env.REACT_APP_OMDB_API_KEY);
 
   return (
     <section>
-      <h1> Omdb </h1>
+      <h1> OMDB </h1>
       <Form onSubmit={onSubmit}>
         <Input type='text' value={searchQuery} onChange={setSearchQuery} />
         <Button type='submit'>Search</Button>
