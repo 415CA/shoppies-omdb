@@ -26,8 +26,7 @@ const nominationSlice = createSlice({
       state.hasErrors = true;
     },
     addNomination: (state, { payload }) => {
-      const { Title, Year, imdbID, Type, Poster } = payload;
-      state.push({ Title, Year, imdbID, Type, Poster });
+      state.films.push(payload);
     },
     removeNomination: (state, { payload }) => {
       state.films = state.filter((nominee) => nominee.imdbID !== payload);
