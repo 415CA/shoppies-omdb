@@ -1,4 +1,4 @@
-import Landing from './Landing';
+import Nomination from './Nomination';
 import Search from './Search';
 
-export { Landing, Search };
+export { Nomination, Search };

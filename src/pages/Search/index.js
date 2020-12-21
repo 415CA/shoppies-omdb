@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FilmList from '../../components/Films';
+import { FilmList } from '../../components/Films';
 import { Button, Form, Input } from '../../components/Form';
 import { fetchOmdb, omdbSelector } from '../../redux/slices/films';
 
@@ -25,7 +25,7 @@ const Search = () => {
         <Button type='submit'>Search</Button>
       </Form>
       <div className='content'>
-        <FilmList films={films} loading={loading} hasErrors={hasErrors} />
+        {films && <FilmList films={films} loading={loading} hasErrors={hasErrors} />}
       </div>
     </section>
   );
