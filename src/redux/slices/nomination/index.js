@@ -29,7 +29,8 @@ const nominationSlice = createSlice({
       state.films.push(payload);
     },
     removeNomination: (state, { payload }) => {
-      state.films = state.filter((nominee) => nominee.imdbID !== payload);
+      state.films = state.films.filter((nominee) => nominee.imdbID !== payload);
+      console.log(state.films);
     },
   },
 });
