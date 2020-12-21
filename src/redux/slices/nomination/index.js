@@ -26,11 +26,16 @@ const nominationSlice = createSlice({
       state.hasErrors = true;
     },
     addNomination: (state, { payload }) => {
-      state.films.push(payload);
+      state.films.push({ ...payload, nomination: true });
     },
     removeNomination: (state, { payload }) => {
       state.films = state.films.filter((nominee) => nominee.imdbID !== payload);
-      console.log(state.films);
+    },
+    reachedFiveNominees: (state) => {
+      state.hasFiveNominees = true;
+    },
+    underFiveNominees: (state) => {
+      state.hasFiveNominees = false;
     },
   },
 });
@@ -42,6 +47,8 @@ export const {
   getNominationFailure,
   addNomination,
   removeNomination,
+  reachedFiveNominees,
+  underFiveNominees,
 } = nominationSlice.actions;
 
 // Selector

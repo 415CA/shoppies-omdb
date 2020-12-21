@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// API KEY
-const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
-
 // Initial State
 export const initialState = {
   loading: false,
@@ -46,9 +43,9 @@ export const fetchOmdb = (query) => async (dispatch) => {
   dispatch(getOmdb(query));
 
   try {
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}&r=json`);
+    const response = await fetch(`http://localhost:3001/omdb/${query}`);
     const data = await response.json();
-    dispatch(getOmdbSuccess(data.Search));
+    dispatch(getOmdbSuccess(data));
   } catch (error) {
     dispatch(getOmdbFailure());
   }

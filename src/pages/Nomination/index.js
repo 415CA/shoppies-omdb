@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FilmDetails from '../../components/Films/Details';
 import { Button, Form } from '../../components/Form';
 import { nominationSelector, removeNomination } from '../../redux/slices/nomination';
@@ -15,6 +15,7 @@ const Nominations = () => {
 
   return (
     <div>
+      {films.length === 5 ? <h3>You have reached 5 Nominees</h3> : null}
       <div>Nominations</div>
       {films.map((film) => (
         <div key={film.imdbID}>
