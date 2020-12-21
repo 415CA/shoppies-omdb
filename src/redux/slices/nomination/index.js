@@ -49,18 +49,3 @@ export const nominationSelector = (state) => state.nomination;
 
 // Reducer
 export default nominationSlice.reducer;
-
-// Async Fetch Action
-export const fetchNomination = (query) => async (dispatch) => {
-  dispatch(getNomination(query));
-
-  try {
-    const response = await fetch(
-      `http://www.nominationapi.com/?apikey=${API_KEY}&s=${query}&r=json`,
-    );
-    const data = await response.json();
-    dispatch(getNominationSuccess(data.Search));
-  } catch (error) {
-    dispatch(getNominationFailure());
-  }
-};
